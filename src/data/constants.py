@@ -31,7 +31,7 @@ TRANSLATIONS_PL = {
     "BEETROOT": "Burak Ćwikłowy", "PUMPKIN": "Dynia", "WATERMELON": "Arbuz", 
     "MELON": "Melon", "REDLETTUCE": "Czerwona Sałata", "NAPACABBAGE": "Kapusta Pekińska", 
     "REDCABBAGE": "Czerwona Kapusta", "CHILLI": "Papryczka Chili", 
-    "SPRING_ONION": "Szczypiorek", "ENOKI": "Grzyby Enoki", "OYSTER": "Boczniaki",
+    "SPRING_ONION": "Zielona Cebulka", "ENOKI": "Grzyby Enoki", "OYSTER": "Boczniaki",
     
     "SEEDS": "Nasiona", "FERTILIZER": "Nawóz", "LIME": "Wapno", 
     "HERBICIDE": "Herbicyd", "WATER": "Woda", "DIESEL": "Paliwo",
