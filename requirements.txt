@@ -1,0 +1,4 @@
+# Farming Helper 25 - Dependencies
+# Python 3.8+ required
+
+customtkinter>=5.2.0
