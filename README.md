@@ -13,19 +13,20 @@ Kompleksowa aplikacja desktopowa typu open-source, stworzona w języku Python. P
 ## ✨ Główne Funkcje
 
 ### 🐄 Zaawansowany Kalkulator TMR
-Narzędzie do tworzenia idealnej mieszanki paszowej (Total Mixed Ration) dla krów, z poszanowaniem widełek procentowych gry.
+Narzędzie do tworzenia idealnej mieszanki paszowe dla zwierząt, z poszanowaniem widełek procentowych gry.
 
 *   **Tryb Standard:** Oblicza ilość litrów składników dla pełnego paszowozu.
-*   **Tryb Uzupełnianie:** Masz już wlaną kiszonkę? Aplikacja obliczy, ile dolać reszty, aby nie przekroczyć pojemności i zachować proporcje.
-*   **Tryb Optymalizator (AI):** **UNIKATOWA FUNKCJA!** Algorytm "Brute-force", który szuka idealnej kombinacji **pełnych bel**. Zamiast bawić się w "38% siana", program powie Ci: *"Wrzuć 2 bele siana, 1 słomy i 2 kubły kiszonki"*. Zero marnowania resztek!
+*   **Tryb Uzupełnianie:** Masz już wlaną kiszonkę, słomy lub siana? Aplikacja obliczy, ile dolać reszty, aby nie przekroczyć pojemności i zachować proporcje.
+*   **Tryb Optymalizator (AI):** Algorytm "Brute-force", który szuka idealnej kombinacji **pełnych bel**. Ma on na celu znalezienie najoptymalniejszych proporcji do paszy tak aby efektywnie wykorzystać pojemność paszowozu
 
 ### 📈 Inteligentny Tracker Cen (Analiza Savegame)
-Zapomnij o ręcznym notowaniu cen. Aplikacja analizuje pliki Twojego zapisu gry (`economy.xml`, `environment.xml`).
+Aplikacja analizuje pliki Twojego zapisu gry (`economy.xml`, `environment.xml`).
 
 *   **Analiza Historii:** Czyta historię cen z Twojego zapisu i wyznacza miesiące, w których dany produkt jest najdroższy.
 *   **Detekcja Czasu:** Automatycznie wykrywa aktualny miesiąc w grze.
 *   **Rekomendacje:** Porównuje aktualny miesiąc z historycznymi maksimami i mówi jasno: **SPRZEDAWAJ** lub **TRZYMAJ**.
 *   **Filtrowanie:** Możesz zaznaczyć tylko te produkty, które faktycznie uprawiasz/posiadasz.
+# **UWAGA:** Aby aplikacja zczytała nowy miesiąć w grze nalezy gre zapisać tak aby zaktualizować pliki savegame z których aplikacja zczytuje dane
 
 ### ⚙️ Inne
 *   **Nowoczesny Interfejs:** Ciemny motyw (Dark Mode) oparty o `customtkinter`.
@@ -116,7 +117,7 @@ Aby stworzyć samodzielny plik wykonywalny (niewymagający Pythona), użyj **PyI
 
 ```bash
 pip install pyinstaller
-pyinstaller --noconsole --onefile --collect-all customtkinter --icon="logo.ico" --name "FarmingHelper25" main.py
+python -m PyInstaller --noconsole --onefile --collect-all customtkinter --icon="logo.ico" --name "FarmingHelper25" main.py
 ```
 *Plik wynikowy znajdziesz w folderze `dist`.*
 
