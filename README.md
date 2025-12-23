@@ -1,6 +1,4 @@
 
-
-```markdown
 # 🌾 Farming Helper 25 by Valhalla
 
 **Profesjonalny asystent dla graczy Farming Simulator 25**
@@ -11,7 +9,6 @@ Kompleksowa aplikacja desktopowa typu open-source, stworzona w języku Python. P
 ![Python](https://img.shields.io/badge/python-3.10%2B-yellow)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-lightgrey)
 
----
 
 ## ✨ Główne Funkcje
 
@@ -35,7 +32,6 @@ Zapomnij o ręcznym notowaniu cen. Aplikacja analizuje pliki Twojego zapisu gry 
 *   **Pamięć Ustawień:** Aplikacja pamięta ścieżkę do savegame, wielkości Twoich bel, pojemność paszowozu i zaznaczone produkty.
 *   **Modularność:** Kod podzielony na czytelne moduły, łatwy do rozwoju.
 
----
 
 ## 📁 Struktura Projektu
 
