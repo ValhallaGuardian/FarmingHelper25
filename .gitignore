@@ -1,1 +1,18 @@
 config.json
+# Foldery budowania (PyInstaller)
+dist/
+build/
+
+# Pliki specyfikacji PyInstaller (generowane automatycznie)
+*.spec
+
+# Pliki tymczasowe Pythona (koniecznie!)
+__pycache__/
+*.pyc
+
+# Ustawienia lokalne VS Code (opcjonalnie)
+.vscode/
+
+# Folder wirtualnego środowiska (jeśli używasz)
+venv/
+env/
