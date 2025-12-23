@@ -78,6 +78,20 @@ class MenuView(ctk.CTkFrame):
             command=self._on_tmr_click
         )
         tmr_button.pack(pady=15)
+
+        # Price Tracker button
+        prices_button = ctk.CTkButton(
+            buttons_frame,
+            text="💰  Ekonomia / Ceny",
+            font=("Roboto", 24, "bold"),
+            width=400,
+            height=80,
+            corner_radius=15,
+            fg_color="#d35400", 
+            hover_color="#a04000",
+            command=self._on_prices_click
+        )
+        prices_button.pack(pady=15)
         
         # Settings button
         settings_button = ctk.CTkButton(
@@ -127,3 +141,6 @@ class MenuView(ctk.CTkFrame):
     def _on_exit_click(self) -> None:
         """Handle Exit button click."""
         self._app.exit_app()
+
+    def _on_prices_click(self) -> None:
+        self._app.show_prices()

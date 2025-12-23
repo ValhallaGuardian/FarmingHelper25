@@ -13,6 +13,7 @@ from src.utils.config_manager import ConfigManager
 from src.views.menu_view import MenuView
 from src.views.tmr_view import TMRView
 from src.views.settings_view import SettingsView
+from src.views.price_view import PriceView
 
 
 class App(ctk.CTk):
@@ -101,10 +102,15 @@ class App(ctk.CTk):
     def show_tmr_calculator(self) -> None:
         """Navigate to the TMR calculator view."""
         self._show_view(TMRView)
+
+    def show_prices(self) -> None:
+        """Navigate to the prices view."""
+        self._show_view(PriceView)
     
     def show_settings(self) -> None:
         """Navigate to the settings view."""
         self._show_view(SettingsView)
+        
     
     def exit_app(self) -> None:
         """Close the application."""
