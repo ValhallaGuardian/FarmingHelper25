@@ -6,13 +6,36 @@ build/
 # Pliki specyfikacji PyInstaller (generowane automatycznie)
 *.spec
 
-# Pliki tymczasowe Pythona (koniecznie!)
+# Pliki tymczasowe Pythona
 __pycache__/
 *.pyc
 
-# Ustawienia lokalne VS Code (opcjonalnie)
+# Ustawienia lokalne edytorów/IDE
 .vscode/
+.idea/
 
-# Folder wirtualnego środowiska (jeśli używasz)
+# Foldery środowisk wirtualnych
 venv/
 env/
+.venv/
+
+# macOS
+.DS_Store
+
+# Testy i cache narzędzi
+.pytest_cache/
+.mypy_cache/
+
+# Pakiety i metadata
+*.egg-info/
+pip-wheel-metadata/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Sekrety i zmienne środowiskowe
+.env
+
+# Dodatkowe (opcjonalne)
+# .ropeproject/
