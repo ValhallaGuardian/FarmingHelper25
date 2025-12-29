@@ -96,9 +96,25 @@ class TMRView(ctk.CTkFrame):
         ctk.CTkLabel(frame, text=f"● {label} ({self.LIMITS[key][0]}-{self.LIMITS[key][1]}%)", 
                      text_color=self.COLORS.get(key, "gray")).pack(side="left")
         
-        entry = ctk.CTkEntry(frame, width=50, justify="center")
+        ctrl = ctk.CTkFrame(frame, fg_color="transparent")
+        ctrl.pack(side="right")
+        
+        btn_minus = ctk.CTkButton(ctrl, text="−", width=28, height=24, fg_color="#444444",
+                                  hover_color="#333333",
+                                  command=lambda e=None: None)
+        btn_minus.pack(side="left", padx=2)
+        
+        entry = ctk.CTkEntry(ctrl, width=50, justify="center")
         entry.insert(0, str(self._config.get_ratio(key)))
-        entry.pack(side="right")
+        entry.pack(side="left", padx=2)
+        
+        btn_plus = ctk.CTkButton(ctrl, text="+", width=28, height=24, fg_color="#444444",
+                                 hover_color="#333333",
+                                 command=lambda e=entry, k=key: self._change_ratio(e, k, 1))
+        btn_plus.pack(side="left", padx=2)
+        
+        # Hook minus to change by -1 (configured after entry is created)
+        btn_minus.configure(command=lambda e=entry, k=key: self._change_ratio(e, k, -1))
         return entry
 
     def _create_result_area(self, parent):
@@ -397,6 +413,21 @@ class TMRView(ctk.CTkFrame):
             messagebox.showerror("Błąd", "Sprawdź poprawność danych wejściowych.")
 
     # --- UTILS ---
+    def _change_ratio(self, entry: ctk.CTkEntry, key: str, delta: int):
+        """Zwiększa / zmniejsza wartość w entry o delta (±1) z zachowaniem limitów."""
+        try:
+            val = int(round(float(entry.get())))
+        except Exception:
+            val = int(self._config.get_ratio(key))
+        new = val + delta
+        min_v, max_v = self.LIMITS[key]
+        if new < min_v:
+            new = min_v
+        if new > max_v:
+            new = max_v
+        entry.delete("0", "end")
+        entry.insert(0, str(new))
+
     def _get_percents(self, entries):
         vals = {}
         for k, e in entries.items():
@@ -414,8 +445,13 @@ class TMRView(ctk.CTkFrame):
                 )
                 return None
         
-        if not (99.0 <= sum(vals.values()) <= 101.0):
-            messagebox.showwarning("Info", f"Suma % wynosi {sum(vals.values())}")
+        total = sum(vals.values())
+        if not (99.0 <= total <= 101.0):
+            messagebox.showerror(
+                "Błąd", 
+                f"Suma udziałów paszy powinna wynosić około 100% (obecnie {total:.1f}%).\nPopraw wartości, aby kontynuować."
+            )
+            return None
         return vals
 
     def _display_result(self, box, text):
