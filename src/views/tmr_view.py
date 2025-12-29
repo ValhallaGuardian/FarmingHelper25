@@ -17,9 +17,9 @@ if TYPE_CHECKING:
 class TMRView(ctk.CTkFrame):
     
     LIMITS = {
-        "hay": (20, 70),
-        "silage": (20, 70),
-        "straw": (1, 30),
+        "hay": (21, 70),
+        "silage": (21, 70),
+        "straw": (1, 29),
         "mineral": (0, 5)
     }
     
@@ -302,9 +302,9 @@ class TMRView(ctk.CTkFrame):
             # które mieszczą się w widełkach procentowych (np. Siano 20-70%)
             
             # Min/Max litrów dla składników (bazując na pełnym wozie)
-            lim_hay = (wagon * 0.20, wagon * 0.70)
-            lim_sil = (wagon * 0.20, wagon * 0.70)
-            lim_str = (wagon * 0.01, wagon * 0.30)
+            lim_hay = (wagon * 0.21, wagon * 0.70)
+            lim_sil = (wagon * 0.21, wagon * 0.70)
+            lim_str = (wagon * 0.01, wagon * 0.29)
             
             # Przeliczenie na zakres bel (Math.ceil dla min, Math.floor dla max)
             # Dodajemy margines +/- 1 bela dla elastyczności
@@ -341,9 +341,9 @@ class TMRView(ctk.CTkFrame):
                         pct_m = (mineral_liters / total_vol) * 100
                         
                         # Sprawdzenie czy mieszanka jest poprawna (TMR)
-                        if not (20 <= pct_h <= 70): continue
-                        if not (20 <= pct_k <= 70): continue
-                        if not (1 <= pct_s <= 30): continue
+                        if not (21 <= pct_h <= 70): continue
+                        if not (21 <= pct_k <= 70): continue
+                        if not (1 <= pct_s <= 29): continue
                         # Mineralna max 5%
                         if pct_m > 5.5: continue 
                         
@@ -402,6 +402,18 @@ class TMRView(ctk.CTkFrame):
         for k, e in entries.items():
             try: vals[k] = float(e.get())
             except: return None
+        
+        # Walidacja indywidualnych wartości względem limitów
+        for k, v in vals.items():
+            min_val, max_val = self.LIMITS[k]
+            if not (min_val <= v <= max_val):
+                messagebox.showerror(
+                    "Błąd walidacji", 
+                    f"{self.LABELS[k]}: wartość {v}% jest poza zakresem!\n"
+                    f"Dozwolony zakres: {min_val}% - {max_val}%"
+                )
+                return None
+        
         if not (99.0 <= sum(vals.values()) <= 101.0):
             messagebox.showwarning("Info", f"Suma % wynosi {sum(vals.values())}")
         return vals
